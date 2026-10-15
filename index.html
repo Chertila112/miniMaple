@@ -1,21 +1,73 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
-    <title>Lesson 4</title>
+    <title>Symbolic diff</title>
     <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <style>
+        body {
+            font: 16px/1.5 system-ui, sans-serif;
+            max-width: 640px;
+            margin: 3rem auto;
+            padding: 0 1rem;
+        }
+        h1 { font-size: 1.25rem; margin-bottom: .25rem; }
+        small { color: #666; }
+        code { background: #f0f0f2; padding: 0 .25rem; border-radius: 3px; }
+        .row { display: flex; gap: .5rem; margin-top: 1rem; }
+        input {
+            flex: 1;
+            padding: .5rem .75rem;
+            font: inherit;
+            font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+        input:focus { outline: 2px solid #3b82f6; border-color: transparent; }
+        button {
+            padding: .5rem 1.1rem;
+            font: inherit;
+            cursor: pointer;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            background: #fafafa;
+        }
+        button:hover { background: #f0f0f0; }
+        pre {
+            margin-top: 1rem;
+            padding: .75rem;
+            background: #f4f4f5;
+            border-radius: 6px;
+            font-size: 1.05rem;
+            min-height: 1.5em;
+            white-space: pre-wrap;
+        }
+        pre.error { background: #fee2e2; color: #991b1b; }
+    </style>
 
-    <script src="src/index.js" type="module"></script>
+    <!-- Вход в приложение: Parcel увидит .ts и транспилирует его -->
+    <script src="src/index.ts" type="module"></script>
 </head>
 
 <body>
-<h1>Implement the symbolic diff here</h1>
-<div id="container">
+    <h1>Символьное дифференцирование</h1>
+    <small>
+        Формат: <code>выражение, переменная</code> —
+        разрешены <code>+ - * ^</code>
+    </small>
 
-</div>
-<div>
-    <button id="demoButton">
-        Add something
-    </button>
-</div>
+    <div class="row">
+        <input
+            id="input"
+            value="4*x^3 - x^2, x"
+            spellcheck="false"
+            autocomplete="off"
+        />
+        <button id="demoButton">Run</button>
+    </div>
+
+    <pre id="output"></pre>
+
+    <div id="container"></div>
 </body>
 </html>
